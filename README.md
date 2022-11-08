@@ -4,7 +4,7 @@ MVI is a Reactive Unidirectional Architecture Pattern which is short for Model-V
 Data flows from View to the ViewModel in a form of intents. 
 And from ViewModel to View in a form of States.
 A state if a snapshot of the View at the moment.
-[MVI](docs/mvi.png)
+![MVI](docs/mvi.png)
 
 
 [DetailsViewModel](/app/src/main/java/nyc/high/schools/viewmodel/DetailsViewModel.kt) is an example of such MVI ViewModel.
