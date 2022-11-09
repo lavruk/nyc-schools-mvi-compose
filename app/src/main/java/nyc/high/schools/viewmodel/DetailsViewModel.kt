@@ -3,6 +3,7 @@ package nyc.high.schools.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.ktor.client.plugins.*
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import nyc.high.schools.service.SchoolsService
@@ -36,7 +37,7 @@ class DetailsViewModel(
         ) { init, _ -> init.dbn }.flatMapLatest { dbn ->
             merge(
                 flow {
-                    kotlinx.coroutines.delay(500)
+                    delay(500) // artificial delay to mimic network issues
                     try {
                         emit(SchoolDetailsIntent.SchoolSatResults(service.satResults(dbn)))
                     } catch (err: ClientRequestException) {
@@ -44,7 +45,7 @@ class DetailsViewModel(
                     }
                 },
                 flow {
-                    kotlinx.coroutines.delay(1500)
+                    delay(1500) // artificial delay to mimic network issues
                     try {
                         emit(SchoolDetailsIntent.SchoolDetails(service.school(dbn)))
                     } catch (err: ClientRequestException) {
